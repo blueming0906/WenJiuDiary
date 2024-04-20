@@ -1,0 +1,59 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<NavMenu> Localizer
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">@Localizer["WenJiuDiary"]</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="flex-column">
+
+@*         <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div> *@
+        
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Home">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="DiaryShow">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> DiaryShow
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="DiaryWrite">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> DiaryWrite
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="DiarySearch">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> DiarySearch
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="DiaryHistory">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> DiaryHistory
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Setting">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Setting
+            </NavLink>
+        </div>
+        
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="culture-example-1">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> culture-example-1
+            </NavLink>
+        </div>
+
+    </nav>
+</div>

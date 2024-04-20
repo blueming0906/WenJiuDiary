@@ -1,0 +1,15 @@
+﻿namespace WenJiuDiary.Library.Models;
+
+public class HomeImage
+{
+    public string FullStartDate { get; set; } = string.Empty;
+
+    public DateTime ExpiresAt { get; set; }
+
+    public string Copyright { get; set; } = string.Empty;
+
+    public string CopyrightLink { get; set; } = string.Empty;
+
+    public byte[] ImageBytes { get; set; }
+
+}

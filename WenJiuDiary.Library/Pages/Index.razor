@@ -1,0 +1,19 @@
+﻿@page "/"
+@inject IDiaryStorage _diaryStorage
+@inject INavigationService _navigationService
+
+@code
+{
+    protected override void OnAfterRender(bool firstRander)
+    {
+        if (!firstRander)
+        {
+            return;
+        }
+        else
+        {
+            _navigationService.NavigateTo(NavigationServiceContants.InitializationPage);
+        }
+
+    }
+}

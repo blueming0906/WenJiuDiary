@@ -1,0 +1,57 @@
+﻿@page "/DiaryDetail/{id}"
+@using WenJiuDiary.Library.Models
+@inject IDiaryStorage _diaryStorage
+@inject INavigationService _navigationService
+
+
+
+@if (_isLoadingDiary)
+{
+    <div>
+        <Spinner></Spinner>
+    </div>
+}
+else
+{
+    <div>
+        <Button OnClick="BackShow" Color="Color.Light" style=" background-image: url( /back.png); background-size:30px 30px; height:30px; width:30px"></Button>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-10"></div>
+
+        <div style="" class=" col-sm-12 col-md-1">
+            
+            @* <Button OnClick="DeleteDiary" Color="Color.Light" style=" background-image: url( /delete.png); background-size:25px 25px; height:25px;width:25px"></Button> *@
+            <PopConfirmButton Placement="Placement.Top"
+                              Color="Color.Light"
+                              ConfirmIcon="fa-solid fa-triangle-exclamation text-danger"
+                              ConfirmButtonColor="Color.Light"
+                              Content="确定删除数据吗？"
+                              IsAsync="true"
+                              Icon="fa fa-trash "
+                                  
+
+                              OnConfirm="DeleteDiary" />
+
+        </div>
+
+        <div class=" col-sm-12 col-md-1">
+            <Button OnClick="UpdateDiary" Color="Color.Light" Icon="fa fa-pencil" ></Button>
+
+        </div>
+    </div>
+    <div style="margin-left:50px" class="col-sm-12 col-md-8">
+        <h4>@_diary.CreaTime.ToString("yyyy-M-d dddd")</h4>
+        <h1 style="color: #0078d4">@_diary.Name</h1>
+        <div class="shim-xl"></div>
+        <h3>@_diary.Content</h3>
+        <div class="shim-2xl"></div>
+    </div>
+
+    <div>
+        <Markdown IsViewer="true" Value="_diary.Content"></Markdown>
+    </div>
+
+
+
+}

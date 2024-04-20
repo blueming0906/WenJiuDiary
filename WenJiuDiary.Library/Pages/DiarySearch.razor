@@ -1,0 +1,59 @@
+﻿@page "/DiarySearch"
+
+@inject IDiaryStorage _diaryStorage
+@inject INavigationService _navigationService
+
+
+
+<BootstrapInputGroup>
+    <BootstrapInputGroupLabel DisplayText="查找"></BootstrapInputGroupLabel>
+    <BootstrapInput @bind-Value="_query" TValue="string" PlaceHolder="请输入.." OnEnterAsync="OnEnterAsync"></BootstrapInput>
+</BootstrapInputGroup>
+
+<br/>
+
+<Button OnClick="QueryAsync">查询</Button>
+
+<br/>
+<br/>
+
+@if (_diaries.Any())
+{
+    <div>
+    
+        @foreach (var diary in _diaries)
+        {
+            <div @onclick="() => OnClick(diary)" class="row">
+                <Card IsShadow="true">
+                    <BodyTemplate>
+                        <div>@diary.Name</div>
+                        <div>@diary.Content</div>
+
+                    </BodyTemplate>
+                </Card>
+            </div>
+
+            <div class="shim-xl"></div>
+        }
+    </div>
+}
+
+else
+{
+    <Empty Image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg" Width="133" Text="暂无数据" />
+}
+
+
+
+@* @foreach (var diery in _diaries)
+{
+
+    <Card>
+        <BodyTemplate>
+            <div>@diery.Name</div>
+            <div>@diery.Content</div>
+
+        </BodyTemplate>
+    </Card>
+    <div class="shim-xl"></div>
+} *@

@@ -1,0 +1,35 @@
+﻿@page "/DiaryUpdate/{id}"
+
+@using System.ComponentModel
+@using WenJiuDiary.Library.Services
+@using WenJiuDiary.Library.Models
+
+@inject IDiaryStorage _diaryStorage
+@inject INavigationService _navigationService
+
+
+@if (_IsLoadingDiary)
+{
+    <div>
+        <Spinner></Spinner>
+    </div>
+}
+else
+{
+    <div class="row">
+
+        <div class="col-sm-12 col-md-10" style="margin-top:30px">
+            @(DateTime.Now.ToString("yyyy-M-d dddd"))
+            <div style="margin-top:10px"></div>
+            <BootstrapInput TValue="string" PlaceHolder="请输入标题..."   @bind-Value="_diary.Name"   />
+            <br>
+            <Editor IsEditor="true" Height="400" PlaceHolder="请输入内容" ShowSubmit="false"  @bind-Value="_diary.Content"  />
+        </div>
+
+        <div style="margin-left:50px;" class=" col-sm-12 col-md-1  ">
+            <Button style="background-image: url( /right.png); background-size:40px 40px; height:40px;width:40px; " ButtonStyle="ButtonStyle.Circle" Color="Color.Light" OnClick="UpdateAsync"></Button>
+        </div>
+    </div>
+}
+
+

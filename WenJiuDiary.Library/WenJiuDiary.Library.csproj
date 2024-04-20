@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorComponent" Version="1.4.0-beta.3" />
+    <PackageReference Include="BootstrapBlazor" Version="8.2.6-beta01" />
+    <PackageReference Include="BootstrapBlazor.FontAwesome" Version="8.0.1" />
+    <PackageReference Include="BootstrapBlazor.SummerNote" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.8" />
+    <PackageReference Include="Sve.Blazor.InfiniteScroll" Version="1.0.0-alpha" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\AppIcon\appicon.svg">
+      <Color>#512BD4</Color>
+      <ForegroundFile>Resources\AppIcon\appiconfg.svg</ForegroundFile>
+    </None>
+    <None Update="Resources\Images\dotnet_bot.svg">
+      <BaseSize>168,208</BaseSize>
+    </None>
+    <None Update="Resources\Raw\AboutAssets.txt">
+      <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </None>
+    <None Update="Resources\Splash\splash.svg">
+      <Color>#512BD4</Color>
+      <BaseSize>128,128</BaseSize>
+    </None>
+  </ItemGroup>
+
+</Project>

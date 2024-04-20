@@ -1,0 +1,82 @@
+﻿@page "/DiaryShow"
+@using Sve.Blazor.InfiniteScroll.Components
+
+@inject IDiaryStorage _diaryStorage
+@inject INavigationService _navigationService
+
+
+@* <Search IgnoreCase="true"
+        IsLikeMatch="true"
+        IsAutoFocus="true"
+        PlaceHolder="输入搜索条件"
+        IsSelectAllTextOnFocus="true"
+        @bind-Value="_query"
+        Items ="@QueryAsync"/> *@
+
+@* <BootstrapInputGroup>
+    <BootstrapInputGroupLabel DisplayText="查找"></BootstrapInputGroupLabel>
+    <BootstrapInput @bind-Value="_query"></BootstrapInput>
+</BootstrapInputGroup>
+<Button OnClick="QueryAsync">查询</Button>
+
+<br />
+
+@foreach (var diery in _diaries)
+{
+    <Card>
+        <BodyTemplate>
+            <div>@diery.Name</div>
+            <div>@diery.Content</div>
+        </BodyTemplate>
+    </Card>
+} *@
+
+
+
+<InfiniteScroll ObserverTargetId="observerTarget"
+                ObservableTargetReached="_ => LoadMoreAsync()">
+    @foreach (var diary in _diaries)
+    {
+        <div @onclick="() => OnClick(diary)" class="row">
+            <Card IsShadow="true" class=" col-sm-12 col-md-10">
+
+                <BodyTemplate>
+                    <div class="row">
+                        <div class=" col-sm-12 col-md-8">
+                            <span class="text--secondary mb-2">@diary.CreaTime.ToString("yyyy-M-d")</span>
+                            <div class="border-bottom" style="width:140%; margin-top:10px">
+                            </div>
+                            <div style="margin-top:10px"></div>
+                            <span class="" style="font-size:medium; font-weight:bold; color:#0078d4">@diary.Name</span>
+                            <div class="shim-2xs"></div>
+                         
+                            @diary.Content
+
+                            @* 选用内容部分显示 内容不规则问题 等待优化 *@
+                            @* @diary.Content.Substring(0, @diary.Content.IndexOf(",")) *@
+                        </div>
+@*                         <div style="padding-left:50px" class=" col-sm-12 col-md-1" >
+                            <img style="height:25px;width:25px" src="/delete.png"/> 
+                        </div>
+
+                        <div class=" col-sm-12 col-md-1">
+                            <img style="height:25px;width:25px" src="write.png" />
+                        </div> *@
+                    </div>
+
+                </BodyTemplate>
+            </Card>
+        </div>
+        <div class="shim-xl"></div>
+    }
+    <div id="observerTarget">
+        @_status 
+    </div>
+</InfiniteScroll>
+
+@* 编辑按钮
+@* <MWindowItem Transition="">
+    <RightBottomFloatButton Icon="mdi-pencil"
+                            OnClick="@(()=>To("write"))">
+    </RightBottomFloatButton>
+</MWindowItem> *@

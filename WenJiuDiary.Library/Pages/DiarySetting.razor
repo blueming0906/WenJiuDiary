@@ -1,0 +1,49 @@
+﻿@page "/Setting"
+
+@using BlazorComponent.I18n
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+
+
+@inject IStringLocalizer<DiarySetting> Localizer  
+
+
+
+<h2>@Localizer["DarkMode"]</h2>
+
+
+
+<h1>设置</h1>
+
+<br/>
+<br/>
+<br/>
+
+<h3>深色模式</h3>
+
+<div class="col-6 col-sm-4 col-md-3 col-lg-auto">
+    <Switch Value="false" OnColor="Color.Dark" OnText="开启" OffText="关闭"></Switch> 
+</div>
+
+<br/>
+<br/>
+<h3>语言选择</h3>
+<RadioList TValue="string" Items="@DemoValues" IsVertical="true" />
+
+<div class="themeable-component" style="@($"--primary-color: {PrimaryTextColor}; --background-color: {PageBackgroundColor}")">
+    <h3>
+        深色主题样式测试
+    </h3>
+</div>
+
+@code {
+    [Parameter]
+    public string PrimaryTextColor { get; set; }
+
+    [Parameter]
+    public string PageBackgroundColor { get; set; }
+}
+
+
+
+

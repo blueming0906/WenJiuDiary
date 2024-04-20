@@ -1,0 +1,34 @@
+﻿@page "/Home"
+@inject ITodayPoetryService _TodayPoetryService
+
+
+
+<div  style="position:absolute; height:90%;width:80%; background-image: url(/diaryshow.png);background-size:100% 100%; padding: 1.5em; color: white">
+    @if (_isLoading)
+    {
+        <h1><Spinner></Spinner></h1>
+    }
+    else
+    {
+        <h2>@_todayPoetry.Snippet</h2>
+        <div class="shim-xl"/>
+        <h4>@_todayPoetry.Dynasty @_todayPoetry.Author</h4>
+        <h4>@_todayPoetry.Name</h4>
+
+        <div style="display: @(_todayPoetry.Source == TodayPoetrySources.Jinrishici ? "block" : "hidden")">
+            <div class="shim-xl"/>
+                推荐自
+            <a href="https://www.jinrishici.com/" target="_blank">
+                今日诗词
+            </a>
+        </div>
+    }
+</div> 
+
+
+
+
+
+
+@*  原背景属性  linear-gradient(180deg,rgb(5, 39, 103) 0%,#3a0647 70%); padding: 1.5em; *@
+

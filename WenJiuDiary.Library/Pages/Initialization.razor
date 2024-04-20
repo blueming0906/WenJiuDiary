@@ -1,0 +1,28 @@
+﻿@page "/Initialization"
+@inject IDiaryStorage _diaryStorage
+@inject INavigationService _navigationService
+
+<div class="text-center">
+    <div class="shim-2xl"></div>
+    <h1><Spinner></Spinner></h1>
+</div>
+
+@code
+{
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+        {
+            return;
+        }
+        else
+        {
+            await _diaryStorage.InitializeAsync();
+        }
+
+        await Task.Delay(1000);
+
+        _navigationService.NavigateTo(NavigationServiceContants.HomePage);
+    }
+}
